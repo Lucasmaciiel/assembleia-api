@@ -4,6 +4,8 @@ import com.lmg.assembleia_api.domain.dto.request.PautaRequest;
 import com.lmg.assembleia_api.domain.dto.response.PautaResponse;
 import com.lmg.assembleia_api.domain.mappers.PautaMapper;
 import com.lmg.assembleia_api.domain.services.PautaService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("pautas")
+@Tag(name = "Pauta", description = "Salvar uma nova pauta")
 public class PautaController {
 
     private final PautaService pautaService;
@@ -24,6 +27,7 @@ public class PautaController {
         this.pautaMapper = pautaMapper;
     }
 
+    @Operation(summary = "Cadastrar uma nova Pauta")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public PautaResponse salvar(@Valid @RequestBody PautaRequest pautaRequest) {
