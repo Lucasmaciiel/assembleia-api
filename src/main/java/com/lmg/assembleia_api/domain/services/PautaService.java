@@ -1,4 +1,4 @@
-package com.lmg.assembleia_api.domain.service;
+package com.lmg.assembleia_api.domain.services;
 
 import com.lmg.assembleia_api.infrastructure.model.Pauta;
 import com.lmg.assembleia_api.infrastructure.repository.PautaRepository;

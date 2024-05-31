@@ -29,6 +29,11 @@ public class AssembleiaExceptionHandler {
         return getBadRequestResponse(mensagemErro);
     }
 
+    @ExceptionHandler(EntidadeNaoEncontradaException.class)
+    public ResponseEntity<MensagemErro> handleEntidadeNaoEncontrada(EntidadeNaoEncontradaException e) {
+        return getBadRequestResponse(e.getMessage());
+    }
+
     private static ResponseEntity<MensagemErro> getBadRequestResponse(String mensagem) {
         return status(HttpStatus.BAD_REQUEST).body(MensagemErro.builder()
                 .timeStamp(Instant.now())

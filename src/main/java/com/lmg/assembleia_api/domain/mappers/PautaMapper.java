@@ -1,4 +1,4 @@
-package com.lmg.assembleia_api.domain.mapper;
+package com.lmg.assembleia_api.domain.mappers;
 
 import com.lmg.assembleia_api.domain.dto.request.PautaRequest;
 import com.lmg.assembleia_api.domain.dto.response.PautaResponse;

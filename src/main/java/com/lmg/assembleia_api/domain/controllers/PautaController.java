@@ -1,9 +1,9 @@
-package com.lmg.assembleia_api.domain.controller;
+package com.lmg.assembleia_api.domain.controllers;
 
 import com.lmg.assembleia_api.domain.dto.request.PautaRequest;
 import com.lmg.assembleia_api.domain.dto.response.PautaResponse;
-import com.lmg.assembleia_api.domain.mapper.PautaMapper;
-import com.lmg.assembleia_api.domain.service.PautaService;
+import com.lmg.assembleia_api.domain.mappers.PautaMapper;
+import com.lmg.assembleia_api.domain.services.PautaService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("pauta")
+@RequestMapping("pautas")
 public class PautaController {
 
     private final PautaService pautaService;
