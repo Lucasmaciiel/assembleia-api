@@ -22,6 +22,11 @@ public class AssembleiaExceptionHandler {
         return getBadRequestResponse(e.getMessage());
     }
 
+    @ExceptionHandler(SessaoInvalidaException.class)
+    public ResponseEntity<MensagemErro> handleBadRequest(SessaoInvalidaException e) {
+        return getBadRequestResponse(e.getMessage());
+    }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<MensagemErro> handleBadRequest(MethodArgumentNotValidException e) {
         var erros = e.getFieldErrors().stream().map(DefaultMessageSourceResolvable::getDefaultMessage).toList();

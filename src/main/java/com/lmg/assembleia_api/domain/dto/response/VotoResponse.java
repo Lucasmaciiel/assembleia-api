@@ -1,7 +1,6 @@
 package com.lmg.assembleia_api.domain.dto.response;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,9 +11,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @EqualsAndHashCode
-@Builder
-public class PautaResponse {
+public class VotoResponse {
 
     private Integer id;
-    private String nome;
+    private String cpfCooperado;
+    private Boolean opcaoEscolhida;
+    private PautaResponse pauta;
+
 }
