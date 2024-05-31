@@ -6,6 +6,7 @@ import com.lmg.assembleia_api.domain.mappers.VotoMapper;
 import com.lmg.assembleia_api.domain.services.VotoFacade;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,10 +28,10 @@ public class VotoController {
     }
 
     @Operation(summary = "Salva um voto")
-    @PostMapping("/pautas/{pautaId}/sessoes/{sessaoId}")
+    @PostMapping("pautas/{pautaId}/sessoes/{sessaoId}")
     public VotoResponse save(@PathVariable Integer pautaId,
                              @PathVariable Integer sessaoId,
-                             @RequestBody VotoRequest votoRequest) {
+                             @Valid @RequestBody VotoRequest votoRequest) {
         var voto = votoMapper.toModel(votoRequest);
         return votoMapper.toResponse(votoFacade.salvar(pautaId, sessaoId, voto));
     }

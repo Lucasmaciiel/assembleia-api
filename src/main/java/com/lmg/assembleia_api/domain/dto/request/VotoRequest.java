@@ -17,9 +17,9 @@ import lombok.Setter;
 public class VotoRequest {
 
     @NotBlank(message = "O CPF é obrigatório")
-    private String cpfCooperado;
+    private String cpf;
 
     @NotNull(message = "Opção é obrigatório")
-    private Boolean opcaoEscolhida;
+    private Boolean escolha;
 
 }

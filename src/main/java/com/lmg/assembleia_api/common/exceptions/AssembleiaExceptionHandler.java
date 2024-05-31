@@ -22,8 +22,8 @@ public class AssembleiaExceptionHandler {
         return getBadRequestResponse(e.getMessage());
     }
 
-    @ExceptionHandler(SessaoInvalidaException.class)
-    public ResponseEntity<MensagemErro> handleBadRequest(SessaoInvalidaException e) {
+    @ExceptionHandler(EstadoInvalidoException.class)
+    public ResponseEntity<MensagemErro> handleBadRequest(EstadoInvalidoException e) {
         return getBadRequestResponse(e.getMessage());
     }
 

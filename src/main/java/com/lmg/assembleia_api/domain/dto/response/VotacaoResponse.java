@@ -1,5 +1,6 @@
 package com.lmg.assembleia_api.domain.dto.response;
 
+import com.lmg.assembleia_api.domain.dto.VotacaoTotalDTO;
 import lombok.Builder;
 import lombok.Data;
 
@@ -7,9 +8,7 @@ import lombok.Data;
 @Builder
 public class VotacaoResponse {
 
-    private PautaResponse pauta;
-    private Integer totalSim;
-    private Integer totalNao;
-    private Integer totalVotos;
-    private Integer sessoesTotal;
+    private Integer pautaId;
+    private VotacaoTotalDTO totalVotacao;
+
 }

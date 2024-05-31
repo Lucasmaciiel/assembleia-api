@@ -1,7 +1,7 @@
 package com.lmg.assembleia_api.domain.services;
 
 import com.lmg.assembleia_api.common.exceptions.EntidadeNaoEncontradaException;
-import com.lmg.assembleia_api.common.exceptions.SessaoInvalidaException;
+import com.lmg.assembleia_api.common.exceptions.EstadoInvalidoException;
 import com.lmg.assembleia_api.domain.dto.response.SessaoResponse;
 import com.lmg.assembleia_api.domain.mappers.SessaoMapper;
 import com.lmg.assembleia_api.infrastructure.model.Sessao;
@@ -57,6 +57,6 @@ public class SessaoService {
 
     public Sessao findByIdAndPautaId(Integer sessaoId, Integer pautaId) {
         return sessaoRepository.findByIdAndPautaId(sessaoId, pautaId).orElseThrow(
-                () -> new SessaoInvalidaException(String.format("Sessão com o ID: %d, não existe na Pauta de ID: %d", pautaId, sessaoId)));
+                () -> new EstadoInvalidoException(String.format("Sessão com o ID: %d, não existe na Pauta de ID: %d", pautaId, sessaoId)));
     }
 }
