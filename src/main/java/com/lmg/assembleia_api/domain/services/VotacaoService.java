@@ -6,15 +6,18 @@ import com.lmg.assembleia_api.domain.dto.response.VotacaoResponse;
 import com.lmg.assembleia_api.infrastructure.model.Voto;
 import com.lmg.assembleia_api.infrastructure.repository.SessaoRepository;
 import com.lmg.assembleia_api.infrastructure.repository.VotoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
 @Service
+@Slf4j
 public class VotacaoService {
 
-    public static final String VOTACAO_NAO_ENCONTRADA = "Votação não encontrada";
+    public static final String VOTACAO_NAO_ENCONTRADA = "Votação não encontrada com PautaId: %s";
 
     private final VotoRepository votoRepository;
     private final SessaoRepository sessaoRepository;
@@ -30,11 +33,15 @@ public class VotacaoService {
      * @param pautaId Id da Pauta
      * @return VotacaoResponse
      */
+    @Transactional(readOnly = true)
     public VotacaoResponse buscarResultado(Integer pautaId) {
+        log.info("Buscando resultado da votação da Pauta {}", pautaId);
+
         List<Voto> votos = votoRepository.findByPautaId(pautaId);
 
         if (CollectionUtils.isEmpty(votos)) {
-            throw new EntidadeNaoEncontradaException(VOTACAO_NAO_ENCONTRADA);
+            log.error("Votação não encontrada com a pautaID {}", pautaId);
+            throw new EntidadeNaoEncontradaException(String.format(VOTACAO_NAO_ENCONTRADA, pautaId));
         }
 
         Integer totalVotos = votos.size();

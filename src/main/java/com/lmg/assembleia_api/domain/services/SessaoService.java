@@ -7,12 +7,14 @@ import com.lmg.assembleia_api.domain.mappers.SessaoMapper;
 import com.lmg.assembleia_api.infrastructure.model.Sessao;
 import com.lmg.assembleia_api.infrastructure.repository.PautaRepository;
 import com.lmg.assembleia_api.infrastructure.repository.SessaoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Slf4j
 @Service
 public class SessaoService {
 
@@ -31,6 +33,7 @@ public class SessaoService {
 
     @Transactional
     public SessaoResponse criarSessao(Integer pautaId, Sessao sessao) {
+        log.info("Abrindo uma sessão...");
         var pauta = pautaRepository.findById(pautaId)
                 .orElseThrow(() -> new EntidadeNaoEncontradaException(PAUTA_NAO_ENCONTRADA + pautaId));
 
@@ -48,11 +51,13 @@ public class SessaoService {
         }
 
         var sessaoSalva = sessaoRepository.save(sessao);
+        log.info("Sessão Id: {} salva com sucesso", sessaoSalva.getId());
+
         LocalDateTime expiraEm = sessaoSalva.getDataInicio().plusMinutes(minutosExpiracao);
 
-        SessaoResponse response = sessaoMapper.toResponse(sessaoSalva);
-        response.setExpiraEm(expiraEm);
-        return response;
+        SessaoResponse sessaoResponse = sessaoMapper.toResponse(sessaoSalva);
+        sessaoResponse.setExpiraEm(expiraEm);
+        return sessaoResponse;
     }
 
     public Sessao findByIdAndPautaId(Integer sessaoId, Integer pautaId) {

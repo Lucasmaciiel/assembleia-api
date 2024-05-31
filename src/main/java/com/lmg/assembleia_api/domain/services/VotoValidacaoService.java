@@ -4,10 +4,12 @@ import com.lmg.assembleia_api.common.exceptions.EstadoInvalidoException;
 import com.lmg.assembleia_api.infrastructure.model.Sessao;
 import com.lmg.assembleia_api.infrastructure.model.Voto;
 import com.lmg.assembleia_api.infrastructure.repository.VotoRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Slf4j
 @Service
 public class VotoValidacaoService {
 
@@ -25,6 +27,7 @@ public class VotoValidacaoService {
         LocalDateTime deadline = sessao.getDataInicio().plusMinutes(sessao.getMinutosExpiracao());
 
         if (LocalDateTime.now().isAfter(deadline)) {
+            log.error("Tempo de sessão expirada em {}", deadline);
             throw new EstadoInvalidoException(SESSAO_EXPIRADA);
         }
     }
@@ -32,6 +35,7 @@ public class VotoValidacaoService {
     public void verificarVotoExistente(final String cpf, Integer pautaId) {
         votoRepository.findByCpfAndPautaId(cpf, pautaId)
                 .ifPresent(v -> {
+                    log.error("Voto ja existe para o CPF: {}", cpf);
                     throw new EstadoInvalidoException(String.format(VOTO_JA_EXISTE, v.getCpf()));
                 });
     }
