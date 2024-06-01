@@ -29,6 +29,13 @@ e rodar o comando:
 * Endereço local: http://localhost:8080/assembleia
 * Endereço local Swagger: http://localhost:8080/assembleia/swagger-ui/index.html
 
+## Passos para uso da API
+* 1- Acessar o swagger/postman
+* 2- Criar uma Pauta
+* 3- Abrir uma nova sessão
+* 4- Realizar um voto
+* 5- Acessar o resultado da votação
+
 ## Tecnologias
 * Java 17
 * Spring boot 3.3.0
