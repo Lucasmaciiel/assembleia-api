@@ -1,4 +1,5 @@
-# Assembleia API
+<h1 style="text-align: center;">Assembleia API</h1>
+
 
 No cooperativismo, cada associado possui um voto e as decisões são tomadas em assembleias, por votação. Imagine que você deve criar uma solução para dispositivos móveis para gerenciar e participar dessas sessões de votação.
 
@@ -16,6 +17,10 @@ Essa solução deve ser executada na nuvem e promover as seguintes funcionalidad
 
 ## Informações
 * Documentação da API - // adicionar
+
+## Serviços de Hospedagem utilizados 
+- Banco de dados/Postgresql: https://neon.tech
+- API: https://render.com
 
 ## Para rodar localmente
 * Ao rodar o projeto localmente verificar a porta do postgresql, username e password no arquivo application.properties
