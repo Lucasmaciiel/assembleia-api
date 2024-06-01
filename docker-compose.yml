@@ -1,6 +1,7 @@
 version: '3.8'
+
 services:
-  db:
+  postgres-db:
     image: postgres:14.1-alpine
     container_name: postgresql
     restart: always
@@ -11,6 +12,16 @@ services:
       - '5432:5432'
     volumes:
       - db:/var/lib/postgresql/data
+
+  spring-app:
+    image: assembleia-app:latest
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-db:5432/postgres
+    depends_on:
+      - postgres-db
+
 volumes:
   db:
     driver: local
