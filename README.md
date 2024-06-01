@@ -20,9 +20,12 @@ Essa solução deve ser executada na nuvem e promover as seguintes funcionalidad
 ## Para rodar localmente
 * Ao rodar o projeto localmente verificar a porta do postgresql, username e password no arquivo application.properties
 
-* Necessário instalar o banco postgres, caso tenha o docker instalado na máquina pode rodar o docker compose que se encontra na raiz do projeto, ele criará uma instância do postgres:
-* `docker-compose up -d` - Instala o postgres
-* `docker ps` - Verifica se o postgresql está rodando
+* Necessário instalar o banco postgres, caso tenha o docker instalado na máquina, basta acessar a raiz do projeto 
+e rodar o comando:
+* `./start.sh` - Cria as imagens e o comando docker compose up será executado
+
+* `docker ps` - Verifica se os containers estão no ar
+![img.png](img.png)
 * Endereço local: http://localhost:8080/assembleia
 * Endereço local Swagger: http://localhost:8080/assembleia/swagger-ui/index.html
 
