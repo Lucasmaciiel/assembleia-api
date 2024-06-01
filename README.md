@@ -22,7 +22,7 @@ Essa solução deve ser executada na nuvem e promover as seguintes funcionalidad
 
 * Necessário instalar o banco postgres, caso tenha o docker instalado na máquina, basta acessar a raiz do projeto 
 e rodar o comando:
-* `./start.sh` - Cria as imagens e o comando docker compose up será executado
+* `./start.sh` - Cria as imagens e o comando docker compose up será executado(Se estiver no windows usar o gitbash para rodar o comando)
 
 * `docker ps` - Verifica se os containers estão no ar
 ![img.png](img.png)
