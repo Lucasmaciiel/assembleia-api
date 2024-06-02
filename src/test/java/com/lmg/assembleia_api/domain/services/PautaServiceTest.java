@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -36,8 +37,7 @@ class PautaServiceTest {
 
         when(pautaRepository.save(pauta)).thenReturn(pautaMock);
 
-        assertEquals(pautaExpected, pautaService.salvar(pauta));
-
+        assertThat(pautaService.salvar(pauta)).usingRecursiveComparison().isEqualTo(pautaExpected);
         verify(pautaRepository).save(pautaCaptor.capture());
         assertEquals(pauta, pautaCaptor.getValue());
     }
