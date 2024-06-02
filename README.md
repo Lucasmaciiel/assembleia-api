@@ -15,12 +15,11 @@ Essa solução deve ser executada na nuvem e promover as seguintes funcionalidad
 É importante que as pautas e os votos sejam persistidos e que não sejam perdidos com o restart da aplicação.
 
 
-## Informações
-* Documentação da API - // adicionar
+## Documentação da API
+* https://assembleia-api.onrender.com/assembleia/swagger-ui/index.html (pode demorar alguns segundos para carregar por ser hospedagem free)
 
 ## Serviços de Hospedagem utilizados 
-- Banco de dados/Postgresql: https://neon.tech
-- API: https://render.com
+- API e PostgreSql: https://render.com
 
 ## Para rodar localmente
 * Ao rodar o projeto localmente verificar a porta do postgresql, username e password no arquivo application.properties
