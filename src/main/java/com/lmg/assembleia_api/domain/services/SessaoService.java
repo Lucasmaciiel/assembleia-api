@@ -60,7 +60,7 @@ public class SessaoService {
         return sessaoResponse;
     }
 
-    public Sessao findByIdAndPautaId(Integer sessaoId, Integer pautaId) {
+    public Sessao buscarPorIdEPautaId(Integer sessaoId, Integer pautaId) {
         return sessaoRepository.findByIdAndPautaId(sessaoId, pautaId).orElseThrow(
                 () -> new EstadoInvalidoException(String.format("Sessão com o ID: %d, não existe na Pauta de ID: %d", pautaId, sessaoId)));
     }

@@ -24,7 +24,7 @@ public class VotoFacade {
     @Transactional
     public Voto salvar(Integer pautaId, Integer sessaoId, Voto voto) {
         log.info("Salvando um novo voto com a PautaId: {}, SessãoId {}", pautaId, sessaoId);
-        Sessao sessao = sessaoService.findByIdAndPautaId(sessaoId, pautaId);
+        Sessao sessao = sessaoService.buscarPorIdEPautaId(sessaoId, pautaId);
         voto.setPauta(sessao.getPauta());
 
         votoValidacaoService.verificarSessao(sessao);
