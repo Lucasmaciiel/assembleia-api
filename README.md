@@ -30,6 +30,9 @@ e rodar o comando:
 
 * `docker ps` - Verifica se os containers estão no ar
 ![img.png](img.png)
+* Para rodar os testes de unitários rodar o comando:
+`mvn test`
+
 * Endereço local: http://localhost:8080/assembleia
 * Endereço local Swagger: http://localhost:8080/assembleia/swagger-ui/index.html
 
